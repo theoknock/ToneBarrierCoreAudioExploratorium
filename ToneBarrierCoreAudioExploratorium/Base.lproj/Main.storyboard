@@ -1,24 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpS-Wg-epO">
+                                <rect key="frame" x="167" y="409" width="59" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" secondItem="jpS-Wg-epO" secondAttribute="width" multiplier="1:1" id="7oP-K5-Tbp"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="play" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="72" scale="large" weight="light"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="togglePlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zja-g4-eSb"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="440" minValue="200" maxValue="2000" maximumValueImage="airpod.gen3.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2QG-UT-y5m" userLabel="Left Channel Frequency">
+                                <rect key="frame" x="17.666666666666657" y="248.33333333333334" width="357.66666666666674" height="30.666666666666657"/>
+                                <imageReference key="minimumValueImage" image="airpod.left" catalog="system" variableValue="5.5511151231257827e-17"/>
+                                <connections>
+                                    <action selector="leftChannelFrequencySliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="JHm-lA-l9b"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="440" minValue="200" maxValue="2000" minimumValueImage="airpod.right" catalog="system" maximumValueImage="airpod.gen3.right" translatesAutoresizingMaskIntoConstraints="NO" id="iah-RT-Oei" userLabel="Right Channel Frequency">
+                                <rect key="frame" x="17.666666666666657" y="160.66666666666666" width="357.66666666666674" height="30.333333333333343"/>
+                                <connections>
+                                    <action selector="rightChannelFrequencySliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Kac-tF-9Ot"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="l.circle.fill" catalog="system" maximumValueImage="r.circle.fill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgk-hZ-E05" userLabel="Balance Slider">
+                                <rect key="frame" x="17.666666666666657" y="555.33333333333337" width="357.66666666666674" height="30.333333333333371"/>
+                                <connections>
+                                    <action selector="channelBalanceSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="sz5-8g-foX"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvn-Lk-PyD" userLabel="Balance Label">
+                                <rect key="frame" x="19.666666666666671" y="542.33333333333337" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemBlueColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Tgk-hZ-E05" firstAttribute="centerY" secondItem="jpS-Wg-epO" secondAttribute="centerY" multiplier="1.3" id="02F-UQ-3ml"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rvn-Lk-PyD" secondAttribute="trailing" symbolic="YES" id="0it-ER-qbQ"/>
+                            <constraint firstItem="Tgk-hZ-E05" firstAttribute="height" secondItem="jpS-Wg-epO" secondAttribute="height" multiplier="0.5" id="2x9-dm-vfd"/>
+                            <constraint firstItem="2QG-UT-y5m" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="2zI-R3-Obg"/>
+                            <constraint firstItem="Tgk-hZ-E05" firstAttribute="centerX" secondItem="jpS-Wg-epO" secondAttribute="centerX" id="6y4-wc-aA1"/>
+                            <constraint firstItem="jpS-Wg-epO" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="U9X-S4-Zhz"/>
+                            <constraint firstItem="Rvn-Lk-PyD" firstAttribute="bottom" secondItem="Tgk-hZ-E05" secondAttribute="top" constant="8" symbolic="YES" id="UFJ-pW-3kh"/>
+                            <constraint firstItem="jpS-Wg-epO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="WDG-3V-NFz"/>
+                            <constraint firstItem="iah-RT-Oei" firstAttribute="height" secondItem="jpS-Wg-epO" secondAttribute="height" multiplier="0.5" id="aLQ-KP-uri"/>
+                            <constraint firstItem="iah-RT-Oei" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="apr-hP-ttd"/>
+                            <constraint firstItem="jpS-Wg-epO" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.15" id="d0O-Zq-Eqm"/>
+                            <constraint firstItem="iah-RT-Oei" firstAttribute="centerX" secondItem="jpS-Wg-epO" secondAttribute="centerX" id="h2p-30-EH8"/>
+                            <constraint firstItem="2QG-UT-y5m" firstAttribute="centerY" secondItem="jpS-Wg-epO" secondAttribute="centerY" multiplier="0.6" id="iG5-1S-Sb9"/>
+                            <constraint firstItem="2QG-UT-y5m" firstAttribute="height" secondItem="jpS-Wg-epO" secondAttribute="height" multiplier="0.5" id="iM5-yH-R5O"/>
+                            <constraint firstItem="iah-RT-Oei" firstAttribute="centerY" secondItem="jpS-Wg-epO" secondAttribute="centerY" multiplier="0.4" id="o0K-Xx-wIn"/>
+                            <constraint firstItem="Rvn-Lk-PyD" firstAttribute="leading" secondItem="Tgk-hZ-E05" secondAttribute="leading" id="vsC-ZT-Y7Z"/>
+                            <constraint firstItem="Tgk-hZ-E05" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="xCf-HS-kX2"/>
+                            <constraint firstItem="2QG-UT-y5m" firstAttribute="centerX" secondItem="jpS-Wg-epO" secondAttribute="centerX" id="xZ7-9g-Toq"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="channelBalanceSlider" destination="Tgk-hZ-E05" id="jbi-T9-4ec"/>
+                        <outlet property="leftFrequencySlider" destination="iah-RT-Oei" id="zjc-Bg-5tE"/>
+                        <outlet property="playButton" destination="jpS-Wg-epO" id="Dmu-Pb-lCl"/>
+                        <outlet property="rightFrequencySlider" destination="iah-RT-Oei" id="xJZ-fu-Ek3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="49.618320610687022" y="4.9295774647887329"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="airpod.gen3.left" catalog="system" width="102" height="128"/>
+        <image name="airpod.gen3.right" catalog="system" width="102" height="128"/>
+        <image name="airpod.left" catalog="system" width="79" height="128"/>
+        <image name="airpod.right" catalog="system" width="79" height="128"/>
+        <image name="l.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="play" catalog="system" width="117" height="128"/>
+        <image name="r.circle.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
