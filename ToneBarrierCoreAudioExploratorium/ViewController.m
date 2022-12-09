@@ -20,6 +20,8 @@ static Float32 * right_channel_sample_t = &right_channel_sample;
 static double channelSwap;
 static double * channelSwap_t = &channelSwap;
 static double sampleRate;
+static int counter = 0;
+static int * counter_t = &counter;
 static double left_channel_theta;
 static double right_channel_theta;
 static double left_channel_theta_increment;
@@ -62,7 +64,7 @@ OSStatus RenderTone(
                     AudioBufferList            * ioData)
 
 {
-    printf("inNumberFrames == %u\n", inNumberFrames);
+    printf("inNumberFrames == %u\ncounter == %u", inNumberFrames, *counter_t);
     
     Float32 *buffer_left  = (Float32 *)ioData->mBuffers[0].mData;
     Float32 *buffer_right = (Float32 *)ioData->mBuffers[1].mData;
@@ -70,10 +72,10 @@ OSStatus RenderTone(
     // Generate the samples
     for (UInt32 frame = 0; frame < inNumberFrames; frame++)
     {
-        double left_a  = ((1.0 - *channelSwap_t) * sin(left_channel_theta)) + (*channelSwap_t * sin(right_channel_theta));
-        double right_a = ((1.0 - *channelSwap_t) * sin(right_channel_theta)) + (*channelSwap_t * sin(left_channel_theta));;
-        buffer_left[frame]  = left_a;
-        buffer_right[frame] = right_a;
+        double a = sinf(left_channel_theta) * (1.0 - *channelSwap_t);
+        double b = sinf(right_channel_theta) * *channelSwap_t;
+        buffer_left[frame]  = (2.f * (sinf(a + b) * cosf(a - b))) / 2.f * (1.0 - *channelSwap_t);;
+        buffer_right[frame] = (2.f * (sinf(a + b) * cosf(a - b))) / 2.f * *channelSwap_t;;
         
         left_channel_theta += left_channel_theta_increment;
         if (left_channel_theta > 2.0 * M_PI)
@@ -88,6 +90,7 @@ OSStatus RenderTone(
         }
     }
     
+
     return noErr;
 }
 
@@ -244,7 +247,7 @@ void ToneInterruptionListener(void *inClientData, UInt32 inInterruptionState)
         
         *leftChannelFrequency_t  = self.leftFrequencySlider.value;
         *rightChannelFrequency_t = self.rightFrequencySlider.value;
-        *channelSwap_t           = pow(self.channelBalanceSlider.value, 0.5);
+        *channelSwap_t           = self.channelBalanceSlider.value;
         frequency_modulator();
     });
     
