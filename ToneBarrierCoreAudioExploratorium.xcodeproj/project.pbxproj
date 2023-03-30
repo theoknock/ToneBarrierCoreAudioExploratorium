@@ -11,9 +11,9 @@
 		B991B859293B910500DD55C0 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B991B858293B910500DD55C0 /* SceneDelegate.m */; };
 		B991B85C293B910500DD55C0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B991B85B293B910500DD55C0 /* ViewController.m */; };
 		B991B85F293B910500DD55C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B991B85D293B910500DD55C0 /* Main.storyboard */; };
-		B991B861293B910600DD55C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B991B860293B910600DD55C0 /* Assets.xcassets */; };
 		B991B864293B910600DD55C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B991B862293B910600DD55C0 /* LaunchScreen.storyboard */; };
 		B991B867293B910600DD55C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B991B866293B910600DD55C0 /* main.m */; };
+		B99A903E29A441D8003B5F85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B99A903D29A441D8003B5F85 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,6 @@
 		B991B85A293B910500DD55C0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B991B85B293B910500DD55C0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		B991B85E293B910500DD55C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B991B860293B910600DD55C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B991B863293B910600DD55C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B991B865293B910600DD55C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B991B866293B910600DD55C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -35,6 +34,7 @@
 		B991B873293B91AD00DD55C0 /* AVFAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFAudio.framework; path = System/Library/Frameworks/AVFAudio.framework; sourceTree = SDKROOT; };
 		B991B874293B91AD00DD55C0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B991B875293B91AD00DD55C0 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		B99A903D29A441D8003B5F85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +75,9 @@
 				B991B85A293B910500DD55C0 /* ViewController.h */,
 				B991B85B293B910500DD55C0 /* ViewController.m */,
 				B991B85D293B910500DD55C0 /* Main.storyboard */,
-				B991B860293B910600DD55C0 /* Assets.xcassets */,
 				B991B862293B910600DD55C0 /* LaunchScreen.storyboard */,
 				B991B865293B910600DD55C0 /* Info.plist */,
+				B99A903D29A441D8003B5F85 /* Assets.xcassets */,
 				B991B866293B910600DD55C0 /* main.m */,
 			);
 			path = ToneBarrierCoreAudioExploratorium;
@@ -154,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B991B864293B910600DD55C0 /* LaunchScreen.storyboard in Resources */,
-				B991B861293B910600DD55C0 /* Assets.xcassets in Resources */,
+				B99A903E29A441D8003B5F85 /* Assets.xcassets in Resources */,
 				B991B85F293B910500DD55C0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

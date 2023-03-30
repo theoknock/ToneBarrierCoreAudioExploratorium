@@ -33,8 +33,8 @@ const double r_amplitude = 1.0;
 
 static void (^frequency_modulator)(void) = ^{
     ({
-        *left_channel_theta_increment_t  = (2.0 * M_PI * *leftChannelFrequency_t / sampleRate);
-        *right_channel_theta_increment_t = (2.0 * M_PI * *rightChannelFrequency_t  / sampleRate);
+        *left_channel_theta_increment_t  = ((2.0 * M_PI) / sampleRate) * *leftChannelFrequency_t;
+        *right_channel_theta_increment_t = ((2.0 * M_PI) / sampleRate) * *rightChannelFrequency_t;
     });
 };
 
@@ -51,8 +51,8 @@ static void (^phase_modulator)(void) = ^{
 };
 
 static Float32 (^scale)(Float32, Float32, Float32, Float32, Float32) = ^ Float32 (Float32 val_old, Float32 min_new, Float32 max_new, Float32 min_old, Float32 max_old) {
-   Float32 val_new = min_new + ((((val_old - min_old) * (max_new - min_new))) / (max_old - min_old));
-   return val_new;
+    Float32 val_new = min_new + ((((val_old - min_old) * (max_new - min_new))) / (max_old - min_old));
+    return val_new;
 };
 
 OSStatus RenderTone(
@@ -64,18 +64,15 @@ OSStatus RenderTone(
                     AudioBufferList            * ioData)
 
 {
-    printf("inNumberFrames == %u\ncounter == %u", inNumberFrames, *counter_t);
-    
     Float32 *buffer_left  = (Float32 *)ioData->mBuffers[0].mData;
     Float32 *buffer_right = (Float32 *)ioData->mBuffers[1].mData;
     
-    // Generate the samples
     for (UInt32 frame = 0; frame < inNumberFrames; frame++)
     {
         double a = sinf(left_channel_theta) * (1.0 - *channelSwap_t);
         double b = sinf(right_channel_theta) * *channelSwap_t;
-        buffer_left[frame]  = (2.f * (sinf(a + b) * cosf(a - b))) / 2.f * (1.0 - *channelSwap_t);;
-        buffer_right[frame] = (2.f * (sinf(a + b) * cosf(a - b))) / 2.f * *channelSwap_t;;
+        buffer_left[frame]  = (2.f * (sinf(a + b) * cosf(a - b))) / 2.f * (1.0 - *channelSwap_t);
+        buffer_right[frame] = (2.f * (sinf(a + b) * cosf(a - b))) / 2.f * *channelSwap_t;
         
         left_channel_theta += left_channel_theta_increment;
         if (left_channel_theta > 2.0 * M_PI)
@@ -90,7 +87,31 @@ OSStatus RenderTone(
         }
     }
     
-
+    // Generate the samples
+//    for (UInt32 frame = 0; frame < inNumberFrames; frame++)
+//    {
+//        // Use triangle wave
+//        double gain = 2.f * (1.f / M_PI) * asin(sin(M_PI * *channelSwap_t));
+//        double a = sinf(left_channel_theta);
+//        double b = sinf(right_channel_theta);
+//
+//        buffer_left[frame]  = (cosf((a - b)) * sinf((a + b))) * gain;
+//        buffer_right[frame] = (cosf((a - b)) * sinf((a + b))) * gain;
+//
+//        left_channel_theta += left_channel_theta_increment;
+//        if (left_channel_theta > 2.0 * M_PI)
+//        {
+//            left_channel_theta -= 2.0 * M_PI;
+//        }
+//
+//        right_channel_theta += right_channel_theta_increment;
+//        if (right_channel_theta > 2.0 * M_PI)
+//        {
+//            right_channel_theta -= 2.0 * M_PI;
+//        }
+//    }
+    
+    
     return noErr;
 }
 
